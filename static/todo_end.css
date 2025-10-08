@@ -1,0 +1,330 @@
+/*整體*/
+.body{ /*(類選擇器)，此處是設定body內的"元素"的預設*/
+    font-family: inter, sans-serif;
+    font-size:1rem ;
+    background-color: #ffffff; /*注意此指的不是"網頁"背景色,指個body中元素的預設背景色*/
+    
+}
+
+/*網頁*/
+body { /*(元素選擇器)*/
+    background-color: #FFFBF6;
+}
+/*標題*/
+.list_title{ 
+    background-color: #F9EED8;
+    height: 50px;
+    margin-top: -10px;
+    margin-left: -10px;
+    
+    display: flex; 
+  
+    
+}
+h2{ 
+    position:absolute;
+
+    height: 55px;
+    width: 100%; /*使其與視窗的寬度相同*/
+
+    /*文字*/  
+    font-family: inter, sans-serif;
+    font-size:2.5rem ;
+    color:#AC9B92;
+    text-align: center;
+
+    /*文字框*/  
+    margin-top: -5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*--------搜尋區--------------------------------*/
+.search {
+    margin-top: 30px; /*框 距離父 30px*/
+    margin-left: 13%;
+
+    display: flex; /*彈性布局方式排列  (預設:block 表示元素將作為塊級元素呈現，佔據一整行*/
+    align-items: center; 
+    
+    white-space: nowrap; /* 禁止內容換行 -> 保持單行排列 */ 
+}
+/*關鍵字 查詢*/
+.keywordTextField{
+    display: flex;
+    align-items: center; /*垂直置中*/
+    margin-right: 50px; /*右邊間距，與日期搜尋隔開*/
+}
+#search-icon{
+    color: #2E6778;
+    background-color: #E6F4F6;
+    border: 2px solid #E6F4F6;
+    border-radius: 30px 0px 0px 30px;
+    padding: 10px ; 
+    position: relative; /* 將圖示設為相對定位 父:預設keywordTextField */
+    margin-right: -40px; /* 調整右邊距離以使圖示與輸入框之間有足夠的間距 */
+}
+#searchInput{ 
+    background-color:#E6F4F6;
+    border: none;
+    border-radius: 30px;
+    width: 400px;
+    height: 30px;
+    padding: 5px 20px 5px 50px; /*上右下左*/
+    outline: none;  /*取消元素的輪廓線，(聚焦時)*/
+}
+/*日期範圍 查詢*/
+.dateRange{
+    display: flex;
+    align-items: center;
+}
+#dateStart,#dateEnd{
+    background-color:#E6F4F6;
+    border: none;
+    border-radius: 30px;
+    width: 100px;
+    height: 30px;
+    padding: 5px 8px 5px 10px ; /*上右下左*/
+    outline: none;  /*取消元素的輪廓線，(聚焦時)*/
+    
+    margin-left: 5px;
+    margin-right: 10px; /* 添加一些右邊距以分隔日期範圍輸入框 */
+}
+/*優先擊 查詢*/
+#prioritySearch{ 
+    
+    display: flex;
+    align-items: center;
+    margin-left:10px;}
+#searchPriority{
+    text-align: center;
+    background-color:#E6F4F6;
+    border: none;
+    border-radius: 30px;
+    width: 80px;
+    height: 35px;
+    outline: none;  /*取消元素的輪廓線，(聚焦時)*/
+}
+/*當輸入框聚焦時 變色*/
+#searchInput:focus, 
+#dateStart:focus, 
+#dateEnd:focus,
+#searchPriority:focus{ 
+    transition: background-color 0.3s;
+    background-color:#d7f1f5;}
+
+
+/*-------表格區------------------------------------------------*/
+.displayFrame{/*最外框(含表格、排序)*/
+
+    margin-top: 10px;
+    height: 450px;
+    width: 1220px;
+    margin-left: 10%;
+   
+    display: flex;
+    flex-direction: column; /* 垂直排列子元素(排序鍵、table frame) */
+   }   
+#sort{
+    color: #687777;
+    font-size:1.2rem ;
+    font-weight:bold;
+
+    background-color: #F9EAD8;
+    border-radius: 15px;
+    border:none;
+    outline: none;
+    width: 120px;
+    height:40px;
+    padding: 5px 5px 5px 10px;
+    
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-left: auto; /*自動測量左側*/
+}
+/*表格*/
+.tableContainer{
+    background-color: #FFF6EC;
+   
+    /*width: 100%;*/
+    height: 400px;
+
+    margin-top: 5px;
+    overflow: auto;     /*當t內容超出容器範圍時 出現滾動條*/
+
+}
+
+table{
+    background-color: #fff5e9;/*預設時透明/*/
+ 
+    /*display: flex;
+    float:top;*/
+   /*width: 100%; /*相對父元件*/
+   
+}
+#listTable th{
+    color: #687777;
+    font-size:1.1rem ;
+    
+
+    background-color: #F9EAD8;
+    border-radius: 2px;
+    height: 20px;
+    padding: 5px 0px 5px 0px;
+    table-layout:fixed;
+    
+    
+}
+#listTable td{
+    font-family: inter, sans-serif;
+    
+    background-color: #ffffff;
+    /*border-radius: 5px;考慮一下，如果要的話記得修，編輯時框框會出界*/
+    height: 25px;
+    padding: 5px 2px 5px 2px;
+    text-align: center;
+
+    /*table-layout:fixed;*/
+  /*  overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;*/
+
+}
+#listTable td:nth-child(4){ /*td的width與th同*/
+    
+    text-align: left;
+    padding:5px 2px 5px 10px;
+    
+    /*輸入過多時隱藏*/
+    max-width: 500px;       /*限制最大寬度(不等於設置width屬性)*/
+    overflow: hidden;       /*溢出容器時=>隐藏*/
+    text-overflow: ellipsis; /*溢出容器時=>顯示(...)*/
+    white-space: nowrap;    /*禁止換行*/
+}
+
+
+/*按鈕*/
+.pinBtn, .deleteBtn, .editBtn{
+    background-color: transparent;
+    border: none; 
+    height: 100%;
+    width: 100%;
+    padding: 5px 0px 0px 0px;
+}
+.checkbox {  
+    width: 20px; /* 设置复选框的宽度 */
+    height: 20px; /* 设置复选框的高度 */
+}
+.saveBtn, .cancelBtn{
+    background-color: transparent;
+    border:none;
+    width:50%;
+    height:100%;
+}
+.dateinput, .contentinput, .personinput, .sortselect{
+    background-color:transparent;
+    border:2px solid #D9D9D9;
+    width:95%; 
+    height:80%;   
+    
+    padding: 0px 0px 0px 10px;
+}
+
+/*-------新增區--------------------------------------------*/
+.input{
+    background-color:#e6f4f69a;
+    border-radius: 20px;
+    width: 1200px;
+    height: 60px;
+    padding: 5px 10px 5px 10px;
+
+    margin-top: 35px; /*上方距離父 30px*/
+    margin-left: 10%;
+
+    display: flex; /*彈性布局方式排列  (預設:block 表示元素將作為塊級元素呈現，佔據一整行*/
+    align-items: center; 
+    
+    white-space: nowrap; /* 禁止內容換行 -> 保持單行排列 */ 
+}
+#inputContent{
+    background-color:#DDEEF1;
+    border-radius: 10px;
+    border: none;
+    outline: none;  /*取消元素的輪廓線，(聚焦時)*/
+    
+    width: 700px;
+    height: 30px;
+    padding: 5px 15px 5px 15px; /*上右下左*/
+    
+    margin-right: 5px;
+    margin-left: 5px;
+}
+#inputPerson{
+    background-color:#DDEEF1;
+    border-radius: 10px;
+    border: none;
+    outline: none;  /*取消元素的輪廓線，(聚焦時)*/
+    
+    width: 200px;
+    height: 30px;
+    padding: 5px 20px 5px 20px; /*上右下左*/
+    
+    margin-right: 5px;
+}
+#inputDate{
+    display: flex;
+    align-items: center;
+
+    background-color:#DDEEF1;
+    border-radius: 10px;
+    outline: none;  /*取消元素的輪廓線，(聚焦時)*/
+    border: none;
+
+    width: 100px;
+    height: 30px;
+    padding: 5px 20px 5px 20px; /*上右下左*/
+
+    margin-right: 5px;
+}
+#selectPriority{
+    background-color:#DDEEF1;
+    border: none;
+    border-radius: 10px;
+    outline: none;  /*取消元素的輪廓線，(聚焦時)*/
+
+    width: 80px;
+    height: 40px;
+    padding: 5px 0px 5px 15px; /*上右下左*/
+    
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
+}
+#btn_add {
+    background-color: #F9EAD8;
+    border:none;
+    border-radius: 10px;
+    height: 40px;
+    width: 40px;
+
+    margin-right: 5px;
+
+   
+}
+/*新增建-點擊、懸停時變化*/
+#btn_add:hover { 
+    transition: background-color 0.3s;/* 添加(變色的) 過渡效果 */
+    background-color: #C0D7DB; /* 滑鼠懸停時的顏色 */}
+#add_icon{color: #77959C;}
+#btn_add:active #add_icon  {color: #fff5e9;}
+
+/*新增輸入-聚焦時變化*/
+#inputContent:focus,
+#inputPerson:focus,
+#inputDate:focus,
+#selectPriority:focus{
+    transition: background-color 0.3s;
+    background-color:#d1ecf0; }
+

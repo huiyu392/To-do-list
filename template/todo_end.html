@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset ="UTF-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <title> 待辦清單 </title>
+        <link rel ="stylesheet" href="../static/todo_end.css">
+        <script src="https://kit.fontawesome.com/4aaf753a90.js" crossorigin="anonymous"></script>   <!--使用 Font Awesome的圖標 (須連網)-->
+    </head>
+    <body>
+        <!--大標題(List name)-->
+        <div class="list_title">
+            <h2>List</h2>
+        </div>
+
+        <!--查詢-->
+        <div class="search">
+            <!--關鍵字 查詢-->
+            <div class="keywordTextField">
+                <i class="fa-solid fa-magnifying-glass" id="search-icon" ></i>  <!--使用 Font Awesome的圖標 -->
+                <input id="searchInput"  type="text" placeholder="關鍵字搜尋 (項目、人名)" >
+            </div>
+            <!--日期範圍 查詢-->
+            <div id="dateRange">
+                <label for="dateStart"> 日期範圍</label>
+                <input id="dateStart" type="date">
+                <label for="dateEnd">到</label>
+                <input id="dateEnd" type="date">
+            </div>
+            <!--優先擊 查詢-->
+            <div id="prioritySearch">
+                <label for="searchPriority"> 優先級查詢：</label>
+                <select  id="searchPriority" >
+                        <option value="">預設(全)</option>
+                        <option value="一般">一般</option>
+                        <option value="中級">中級</option> 
+                        <option value="緊急">緊急</option> 
+                </select>
+            </div>
+        </div>
+
+        <!--Display-->
+        <div class="displayFrame">
+            <!--排序方式-->
+            <select id ="sort" onchange ="sortList()">
+                <option value="排序">排序</option> 
+                <option value="緊急優先">重要性▼</option> 
+                <option value="一般優先">重要性▲</option>
+                <option value="時間順序">到日期▼ </option>
+                <option value="時間倒序">到日期▲</option>
+            </select>
+       
+            <!--清單表-->
+            <div class="tableContainer">
+                <table id="listTable">
+                    <thead> 
+                        <th width="50px">
+                            <div class="check-icon">
+                                <i class="fa-solid fa-check" style="color: #999897;"></i>
+                            </div>
+                        </th>
+                        <th width="130px">日期</th> 
+                        <th width="30px" id="pin"></th>
+                        <th width="500px">內容</th>
+                    
+                        <th width="200px">負責人</th>
+                        <th width="110px">優先級</th>
+                        <th width="100px" id="edit"></th>
+                        <th width="100px" id="edit"></th>
+                    </thead>
+                     <tbody>
+                    <!-- 表格內容(動態變更) -->
+                    {{range .}}
+                    <tr>
+                        <td><input type="checkbox" class="checkbox" onclick="deleteRow(this)" itemid="{{.Id}}"></td>
+                        <td class="{{if .Expired}}expired-date{{end}}">{{.Date}}</td>
+                        <td>
+                            <button class="pinBtn unpinned" onclick=" pinRow(this)" itemid="{{.Id}}" itempin="{{.Pinned}}">
+                                <i class="fa-solid fa-thumbtack fa-rotate-by fa-xl" style="--fa-rotate-angle: 30deg"></i>
+                            </button>
+                        </td>
+                        <td>{{.Content}}</td>
+                        <td>{{.Person}}</td>
+                        <td>{{.Priority}}</td>
+                        <td>
+                            <button class="editBtn" onclick="editRow(this)" itemid="{{.Id}}">
+                                <i class="fa-solid fa-pen-to-square fa-xl" style="color:#999897"></i>     
+                            </button>
+                        </td>
+                        <td>
+                            <button class="deleteBtn" onclick="deleteRow(this)" itemid="{{.Id}}">
+                                <i class="fa-solid fa-trash fa-xl" style="color:#999897"></i>     
+                            </button>
+                       </td>
+                    </tr>
+                    {{end}}
+                </tbody>
+                </table>
+            </div>
+        </div>   
+            
+        <!--新增-->
+            <form class="input" method="post">
+                <input id="inputContent" type="text" placeholder="新增項目">
+                <input id="inputPerson" type="text" placeholder="負責人">
+                <input id="inputDate" type="date">
+                <select id = "selectPriority">
+                    <option value="一般">一般</option>
+                    <option value="中級">中級</option>
+                    <option value="緊急">緊急</option>
+                </select>
+                <button id="btn_add" type="button">
+                    <i class="fa-solid fa-plus fa-2xl" id="add_icon" ></i>
+                </button>
+                
+            </form>
+      
+        <script src="../static/todo_end.js"></script>
+    </body>
+    
+</html>
