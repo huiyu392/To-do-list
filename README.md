@@ -1,5 +1,22 @@
 # 網站開發 - 個人待辦事項：v1.2024.3.10
+## 開髮工具
+- 前端：HTML / CSS / JS
+- 後端：Golang(Go)
+- 資料庫：MySQL / MariaDB (此使用HeidiSQL管理)
+  
+系統架構流程圖：
+``` 
+[使用者瀏覽器]
+     │
+     ▼
+ HTML / CSS / JS   ←→   Golang 伺服器(API)
+                          │
+                          ▼
+                  MySQL / MariaDB 資料庫
+                          │
+                      (HeidiSQL 管理)
 
+```
 ## 功能描述
 ### 【搜尋】
     1.關鍵字搜尋 (即時更新) 
@@ -25,3 +42,11 @@
             - 出現 確認/取消鍵 (新增到一半可以擱置)
             - 變色
         c. 刪除：點擊，刪除待辦事務
+        
+## 畫面展示
+### 啟動操作
+    - 確保資料庫開啟
+    - 進入專案，`go run main.go`，開啟Go 伺服器
+    - http://127.0.0.1:8080/ 看到網頁內容
+    
+<img width="1702" height="990" alt="image" src="https://github.com/user-attachments/assets/b1d5af23-57bf-41f1-9e5f-71da36a6d315" />
